@@ -23,10 +23,10 @@ navbar:
     articles:
       text: Articles
       menu:
-        - text: "Raw Data Guide"
-          href: articles/raw_data_guide.html
         - text: "bribeR Data Guide"
           href: articles/briber_data_guide.html
+        - text: "Raw Data Guide"
+          href: articles/raw_data_guide.html
         - text: "Using bribeR"
           href: articles/using_briber.html
         - text: "Transcript Network App"
@@ -69,7 +69,7 @@ articles:
   - title: "Articles"
     navbar: ~
     contents:
-      - raw_data_guide
       - briber_data_guide
+      - raw_data_guide
       - using_briber
       - transcript_network_app

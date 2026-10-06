@@ -294,8 +294,9 @@ server <- function(input, output, session) {
   # === Build speaker dropdown map: node id -> display name ================
   # useLabels = TRUE in nodesIdSelection reads the node `label` column, which
   # holds the display name. `values` restricts the dropdown to speakers, so
-  # that topic nodes are left out of it.
-  speaker_dropdown_values <- nodes_speaker_st$id
+  # that topic nodes are left out of it. The dropdown lists speakers in the
+  # order of `values`, which is alphabetical by display name.
+  speaker_dropdown_values <- nodes_speaker_st$id[str_order(nodes_speaker_st$label)]
 
   # Drop helper `name` column before passing nodes to visNetwork
   nodes_speaker_st <- nodes_speaker_st |>

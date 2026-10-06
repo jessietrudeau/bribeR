@@ -26,7 +26,7 @@
 #' @return
 #' A tibble with one row per transcript and columns:
 #' - `id` (numeric): transcript identifier.
-#' - `date` (character): date associated with the transcript (or `NA` if absent).
+#' - `date` (Date): date associated with the transcript (or `NA` if absent).
 #' - `speakers` (list of character): unique, sorted vector of speakers for the transcript.
 #' - `n_words` (integer): total word count across the transcript's `speech` column.
 #' - `topics` (list of character): vector of topic names inferred from `topic_*` flags.
@@ -78,7 +78,7 @@ read_transcript_meta_data <- function(id = NULL, quiet = TRUE) {
   if (!"id" %in% names(desc)) stop("`transcript_index` must include column 'id'.", call. = FALSE)
   if (!"date" %in% names(desc)) {
     if (!quiet) warning("`transcript_index` has no 'date' column; setting NA for dates.")
-    desc$date <- NA_character_
+    desc$date <- as.Date(NA)
   }
   if (!"id" %in% names(spt)) stop("`speakers_per_transcript` must include column 'id'.", call. = FALSE)
 

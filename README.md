@@ -7,13 +7,13 @@
 
 **bribeR** is an R package for accessing and analyzing text transcript data from the *Vladivideos,* covert recordings documenting bribery and corruption during Alberto Fujimori's presidency in Peru (1990-2000). 
 
-This package provides user-friendly access to a large digital archive of *Vladivideo* transcripts and metadata, including data about 118 individuals named in the files and 15 expert-coded topics of importance during the Fujimori presidency.
+This package provides user-friendly access to a large digital archive of *Vladivideo* transcripts and metadata, including data about 139 individuals named in the files and 15 expert-coded topics of importance during the Fujimori presidency.
 
 <p align="center">
   <img src="man/figures/network_viz.png" width="60%" alt="Network of speakers recorded in the Vladivideo files, with Montesinos at the center" />
 </p>
 
-<p align="center">Speakers recorded in the <em>Vladivideo</em> files, with Montesinos in the center.
+<p align="center">Speakers and topics recorded in the <em>Vladivideo</em> files, with Montesinos in the center.
 See <a href="https://jessietrudeau.com/bribeR/articles/transcript_network_app.html" target="_blank">Network Visualization</a>
 for more details.</p>
 
@@ -48,7 +48,7 @@ These functions allow the user to filter transcripts by specific speakers, topic
 
 **3. Integrate with transcript metadata** 
 
-These functions allow the user to find metadata and combine it with transcripts or their speakers. 
+These functions allow the user to integrate transcript-level metadata with full-text transcripts or information about speakers. 
 
 --- 
 
@@ -100,10 +100,10 @@ Document exported functions with roxygen2 comments. Add or update tests in tests
 
 ## Credits
 
-All *Vladivideo* transcript data included in this package are drawn from publicly available materials, including print volumes published by the Peruvian Truth and Reconciliation Commission (*Comisión de la Verdad e Reconciliación*) and online Congressional archives from <a href="https://lum.cultura.pe/cdi/busqueda/colecciones?field_coleccion=55&field_palabra_clave%5B%5D=13462&field_year=" target="_blank">LUM/CDI</a> 
+All *Vladivideo* transcript data included in this package are drawn from publicly available materials, including print volumes edited by Antonio Zapata Velasco and published by the Fondo Editorial del Congreso del Perú, and online Congressional archives from <a href="https://lum.cultura.pe/cdi/busqueda/colecciones?field_coleccion=55&field_palabra_clave%5B%5D=13462&field_year=" target="_blank">LUM/CDI</a> 
 (*Lugar de la Memoria, la Tolerancia y la Inclusión Social*), the Ministry of Culture's Place of Memory, Tolerance, and Social Inclusion. In accordance with LUM’s guidance, we understand these official documentary materials to fall outside copyright protection under Article 9(b) of Peru's <a href="https://www.leyes.congreso.gob.pe/Documentos/DecretosLegislativos/00822.pdf" target= "_blank">Legislative Decree No. 822</a>, which excludes official legislative, administrative, and judicial texts, since the original entity that provided the *Vladivideo* data was the Congress of the Republic of Peru. 
 
-This research was generously supported by Syracuse University's <a href=https://opensource.syracuse.edu/" target="_blank">Open Source Program Office</a> (OSPO) and the Sloan Foundation. 
+This research was generously supported by Syracuse University's <a href="https://opensource.syracuse.edu/" target="_blank">Open Source Program Office</a> (OSPO) and the Sloan Foundation (#G-2023-20946, #G-2025-79206). 
 
 ## Citation 
 

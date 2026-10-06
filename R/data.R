@@ -34,7 +34,7 @@
 #'   \item{file}{Source transcript filename, e.g. \code{"14.csv"}.}
 #'   \item{date}{Date of the recording.}
 #'   \item{original_id}{Original transcript identifier from the source archive.}
-#'   \item{in_book}{1 if the transcript is cited in published work, 0 otherwise.}
+#'   \item{in_book}{1 if available in print book, 0 otherwise.}
 #'   \item{in_online_archive}{1 if available in the online archive, 0 otherwise.}
 #'   \item{type}{Recording medium (\code{"audio"} or \code{"video"}).}
 #'   \item{summary}{Plain-language English summary of the transcript content.}

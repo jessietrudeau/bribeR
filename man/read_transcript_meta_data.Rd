@@ -18,7 +18,7 @@ warning naming them.}
 A tibble with one row per transcript and columns:
 \itemize{
 \item \code{id} (numeric): transcript identifier.
-\item \code{date} (character): date associated with the transcript (or \code{NA} if absent).
+\item \code{date} (Date): date associated with the transcript (or \code{NA} if absent).
 \item \code{speakers} (list of character): unique, sorted vector of speakers for the transcript.
 \item \code{n_words} (integer): total word count across the transcript's \code{speech} column.
 \item \code{topics} (list of character): vector of topic names inferred from \verb{topic_*} flags.

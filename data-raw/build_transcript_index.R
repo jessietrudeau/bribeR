@@ -74,14 +74,14 @@ message("Using descriptions from: ", desc_path)
 topic_cols <- grep("(?i)^topic", names(descriptions_df), value = TRUE)
 message("Detected ", length(topic_cols), " topic columns.")
 if (length(topic_cols) > 0) {
-  descriptions_df <- descriptions_df %>%
+  descriptions_df <- descriptions_df |>
     mutate(across(all_of(topic_cols), .to_flag))
 } else {
   message("⚠️ No topic columns found. Check column names in descriptions.csv.")
 }
 
 # ---- prepare metadata (n + date + topics) ----
-metadata_df <- descriptions_df %>%
+metadata_df <- descriptions_df |>
   mutate(
     n = suppressWarnings(as.integer(n)),
     date = suppressWarnings(parse_date_time(
@@ -98,8 +98,8 @@ metadata_df <- descriptions_df %>%
     in_book           = .to_flag(in_book),
     in_online_archive = .to_flag(in_online_archive),
     original_id       = as.character(original_n)
-  ) %>%
-  select(n, original_id, date, in_book, in_online_archive, type, summary, speakers, all_of(topic_cols)) %>%
+  ) |>
+  select(n, original_id, date, in_book, in_online_archive, type, summary, speakers, all_of(topic_cols)) |>
   filter(!is.na(n))
 
 # ---- speakers per transcript, derived from the dialogue ----
@@ -117,14 +117,14 @@ speaker_table <- map_dfr(files, function(path) {
     n = as.integer(tools::file_path_sans_ext(path_file(path))),
     speaker_key = .norm_key(df$speaker_std)
   )
-}) %>%
-  filter(!is.na(speaker_key), speaker_key != "", speaker_key != "background") %>%
+}) |>
+  filter(!is.na(speaker_key), speaker_key != "", speaker_key != "background") |>
   distinct(n, speaker_key)
 
 
 # Build binary matrix of speaker presence per transcript
-speaker_matrix <- speaker_table %>%
-  mutate(value = 1L) %>%
+speaker_matrix <- speaker_table |>
+  mutate(value = 1L) |>
   pivot_wider(
     id_cols = n,
     names_from = speaker_key,
@@ -148,10 +148,10 @@ speakers_path <- speakers_candidates[file_exists(speakers_candidates)][1]
 if (!is.na(speakers_path)) {
   message("Using speaker roster from: ", speakers_path)
   speakers_df <- read_csv(speakers_path, show_col_types = FALSE)
-  valid_speakers <- speakers_df %>%
-    filter(!is.na(speaker_std)) %>%
-    mutate(speaker_key = .norm_key(speaker_std)) %>%
-    pull(speaker_key) %>%
+  valid_speakers <- speakers_df |>
+    filter(!is.na(speaker_std)) |>
+    mutate(speaker_key = .norm_key(speaker_std)) |>
+    pull(speaker_key) |>
     unique()
 } else {
   warning("⚠️ speakers.csv not found. Keeping all speakers.")
@@ -163,7 +163,7 @@ if (exists("speaker_matrix") && nrow(speaker_matrix) > 0) {
   speaker_cols_to_keep <- paste0("speaker_", valid_speakers)
   existing_speaker_cols <- grep("^speaker_", names(speaker_matrix), value = TRUE)
   keep_cols <- intersect(existing_speaker_cols, speaker_cols_to_keep)
-  speaker_matrix <- speaker_matrix %>%
+  speaker_matrix <- speaker_matrix |>
     select(any_of(c("n", keep_cols)))
   removed_cols <- setdiff(existing_speaker_cols, keep_cols)
   message("Filtered to ", length(keep_cols), " valid speakers from speakers.csv.")
@@ -173,14 +173,14 @@ if (exists("speaker_matrix") && nrow(speaker_matrix) > 0) {
 }
 
 # ---- build transcript index ----
-transcript_index <- tibble(file_abs = files) %>%
+transcript_index <- tibble(file_abs = files) |>
   mutate(
     n    = suppressWarnings(as.integer(tools::file_path_sans_ext(path_file(file_abs)))),
     file = path_file(file_abs)
-  ) %>%
-  select(n, file) %>%
-  left_join(metadata_df, by = "n") %>%
-  left_join(speaker_matrix, by = "n") %>%
+  ) |>
+  select(n, file) |>
+  left_join(metadata_df, by = "n") |>
+  left_join(speaker_matrix, by = "n") |>
   arrange(n)
 
 # ---- replace NA with 0 ----
@@ -188,16 +188,16 @@ speaker_cols_present <- grep("^speaker_", names(transcript_index), value = TRUE)
 topic_cols_present   <- grep("^topic_", names(transcript_index), value = TRUE)
 
 if (length(speaker_cols_present) > 0) {
-  transcript_index <- transcript_index %>%
+  transcript_index <- transcript_index |>
     mutate(across(all_of(speaker_cols_present), ~ replace_na(., 0L)))
 }
 if (length(topic_cols_present) > 0) {
-  transcript_index <- transcript_index %>%
+  transcript_index <- transcript_index |>
     mutate(across(all_of(topic_cols_present), ~ replace_na(., 0L)))
 }
 
 # ---- add summary counts ----
-transcript_index <- transcript_index %>%
+transcript_index <- transcript_index |>
   mutate(
     n_topics   = if (length(topic_cols_present) > 0)
       rowSums(across(all_of(topic_cols_present)), na.rm = TRUE) else NA_integer_,
@@ -219,8 +219,8 @@ transcript_index <- transcript_index %>%
 .s_cols   <- sort(grep("^speaker_", names(transcript_index), value = TRUE))
 .t_cols   <- grep("^topic_",   names(transcript_index), value = TRUE)
 
-transcript_index <- transcript_index %>%
-  select(all_of(c(.desc_cols, .cnt_cols, .s_cols, .t_cols))) %>%
+transcript_index <- transcript_index |>
+  select(all_of(c(.desc_cols, .cnt_cols, .s_cols, .t_cols))) |>
   rename(id = n)
 
 # ---- diagnostics ----

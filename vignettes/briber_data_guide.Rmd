@@ -113,7 +113,7 @@ maximum of 22.
 
 ```{r speakers-wide}
 # Who was present in the first three conversations?
-speakers_per_transcript %>% 
+speakers_per_transcript |> 
   slice(1:3)
 ```
 
@@ -144,9 +144,9 @@ For example, the file contains this biographical information about some
 of the speakers from Fujimori's party:
 
 ```{r speakers 2}
-speakers %>%
-  filter(type == "congress") %>%
-  select(speaker, speaker_std, position, type, party) %>% 
+speakers |>
+  filter(type == "congress") |>
+  select(speaker, speaker_std, position, type, party) |> 
   slice(3:5)
   
 ```

@@ -10,7 +10,7 @@ test_that("get_transcripts_raw returns a named list by default", {
   expect_true(all(nzchar(names(result))))
 })
 
-test_that("get_transcripts_raw filters by n", {
+test_that("get_transcripts_raw filters by id", {
   skip_if_not(
     dir.exists(file.path("data-raw", "transcripts")) ||
       nzchar(system.file("data-raw", "transcripts", package = "bribeR")),
