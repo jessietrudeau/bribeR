@@ -33,8 +33,8 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/raw_data_guide.html">Raw Data Guide</a></li>
-    <li><a class="dropdown-item" href="../articles/briber_data_guide.html">bribeR Data Guide</a></li>
+<li><a class="dropdown-item" href="../articles/briber_data_guide.html">bribeR Data Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/raw_data_guide.html">Raw Data Guide</a></li>
     <li><a class="dropdown-item" href="../articles/using_briber.html">Using bribeR</a></li>
     <li><a class="dropdown-item" href="../articles/transcript_network_app.html">Transcript Network App</a></li>
   </ul>
@@ -284,7 +284,7 @@ chronological speaking order. There is a minimum of 2 speakers per
 conversation and a maximum of 22.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Who was present in the first three conversations?</span></span>
-<span><span class="va">speakers_per_transcript</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">speakers_per_transcript</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 23</span></span></span>
 <span><span class="co">#&gt;      id speaker_std_1 speaker_std_2 speaker_std_3 speaker_std_4 speaker_std_5</span></span>
@@ -377,9 +377,9 @@ identify</td>
 <p>For example, the file contains this biographical information about
 some of the speakers from Fujimori’s party:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">speakers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"congress"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">speaker</span>, <span class="va">speaker_std</span>, <span class="va">position</span>, <span class="va">type</span>, <span class="va">party</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<code class="sourceCode R"><span><span class="va">speakers</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"congress"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">speaker</span>, <span class="va">speaker_std</span>, <span class="va">position</span>, <span class="va">type</span>, <span class="va">party</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 5</span></span></span>
 <span><span class="co">#&gt;   speaker               speaker_std position                type     party</span></span>

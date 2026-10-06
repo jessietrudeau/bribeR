@@ -30,8 +30,8 @@ compiled_transcripts (word counts derived from the speech column).
       <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/raw_data_guide.html">Raw Data Guide</a></li>
-    <li><a class="dropdown-item" href="../articles/briber_data_guide.html">bribeR Data Guide</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/briber_data_guide.html">bribeR Data Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/raw_data_guide.html">Raw Data Guide</a></li>
     <li><a class="dropdown-item" href="../articles/using_briber.html">Using bribeR</a></li>
     <li><a class="dropdown-item" href="../articles/transcript_network_app.html">Transcript Network App</a></li>
   </ul></li>
@@ -88,7 +88,7 @@ warning naming them.</p></dd>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A tibble with one row per transcript and columns:</p><ul><li><p><code>id</code> (numeric): transcript identifier.</p></li>
-<li><p><code>date</code> (character): date associated with the transcript (or <code>NA</code> if absent).</p></li>
+<li><p><code>date</code> (Date): date associated with the transcript (or <code>NA</code> if absent).</p></li>
 <li><p><code>speakers</code> (list of character): unique, sorted vector of speakers for the transcript.</p></li>
 <li><p><code>n_words</code> (integer): total word count across the transcript's <code>speech</code> column.</p></li>
 <li><p><code>topics</code> (list of character): vector of topic names inferred from <code>topic_*</code> flags.</p></li>

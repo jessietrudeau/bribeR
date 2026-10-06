@@ -228,8 +228,8 @@ topics include:
 | `security` | Domestic public security and anti-opposition suppression |
 | `wiese` | Wiese banking group, a financial partner of the regime |
 | `lucchetti_factory` | Lucchetti factory zoning and construction controversy |
-| `ecuador` | 1995 border conflict with Ecuador |
-| `referendum` | Presidental term limits referendum |
+| `ecuador` | 1998 negotiations to settle the border dispute with Ecuador |
+| `referendum` | Presidential term limits referendum |
 | `municipal98` | 1998 municipal elections |
 | `miraflores` | 1998 Miraflores district elections |
 | `appointments` | Appointing, reassigning and removing public sector officials |

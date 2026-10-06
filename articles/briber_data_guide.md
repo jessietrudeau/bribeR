@@ -114,7 +114,7 @@ maximum of 22.
 ``` r
 
 # Who was present in the first three conversations?
-speakers_per_transcript %>% 
+speakers_per_transcript |> 
   slice(1:3)
 #> # A tibble: 3 × 23
 #>      id speaker_std_1 speaker_std_2 speaker_std_3 speaker_std_4 speaker_std_5
@@ -164,9 +164,9 @@ of the speakers from Fujimori’s party:
 
 ``` r
 
-speakers %>%
-  filter(type == "congress") %>%
-  select(speaker, speaker_std, position, type, party) %>% 
+speakers |>
+  filter(type == "congress") |>
+  select(speaker, speaker_std, position, type, party) |> 
   slice(3:5)
 #> # A tibble: 3 × 5
 #>   speaker               speaker_std position                type     party

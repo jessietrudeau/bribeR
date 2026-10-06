@@ -35,7 +35,7 @@ A tibble with one row per transcript and columns:
 
 - `id` (numeric): transcript identifier.
 
-- `date` (character): date associated with the transcript (or `NA` if
+- `date` (Date): date associated with the transcript (or `NA` if
   absent).
 
 - `speakers` (list of character): unique, sorted vector of speakers for

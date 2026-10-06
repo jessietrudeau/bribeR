@@ -37,7 +37,7 @@ code selecting indicator columns with `speaker_` or `topic_`:
 
 - in_book:
 
-  1 if the transcript is cited in published work, 0 otherwise.
+  1 if available in print book, 0 otherwise.
 
 - in_online_archive:
 
